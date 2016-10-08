@@ -29,6 +29,8 @@ public class Main extends Application {
 			m2.setLayoutX(350);
 			
 			root.getChildren().addAll( m1, r0, m2);
+			
+			Contact.estEnContact(r0);
 
 			Scene scene = new Scene(root,1000,600);
 			
