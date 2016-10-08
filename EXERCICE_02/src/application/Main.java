@@ -21,9 +21,16 @@ public class Main extends Application {
 			Controlleur ct = new Controlleur();
 			ct.init();
 			Rectangle r0 = ct.getR0();
-			root.getChildren().add(r0);
+			
+			Rectangle m1 = new Controlleur(2).getR0();
+			m1.setLayoutX(200);
+			
+			Rectangle m2 = new Controlleur(2).getR0();
+			m2.setLayoutX(350);
+			
+			root.getChildren().addAll( m1, r0, m2);
 
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,1000,600);
 			
 			root.setOnMouseClicked(e -> gerer_clicks(r0, e));
 			scene.setOnKeyPressed(e1 -> gerer_keys(r0, e1));
@@ -49,11 +56,11 @@ public class Main extends Application {
 		break;
 		case LEFT: r.setX(r.getX() - 5);
 		break;
-		case RIGHT: r.setX(r.getX() + 5);
+		case RIGHT: r.setX(r.getX() + 1);
 		break;
 		case B : r.setFill(Color.CORNFLOWERBLUE);
         break;
-		case V : r.setFill(Color.MEDIUMPURPLE);
+		case V : r.setFill(Color.BLUEVIOLET);
         break;
 		}
 		

@@ -10,6 +10,13 @@ import javafx.scene.shape.Rectangle;
 public class Controlleur{
 	
 	private Rectangle r0;
+	
+	public Controlleur(){
+	}
+	
+	public Controlleur(int x){
+		r0 = new Rectangle(20, 600, Color.BLACK);
+	}
 
 	public void init() {
 		
