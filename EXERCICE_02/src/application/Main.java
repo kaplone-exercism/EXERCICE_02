@@ -14,9 +14,10 @@ import javafx.scene.shape.Rectangle;
 public class Main extends Application {
 		
 	int bonus = 0;
-	Rectangle r0;
+	Rectangle  r0;
 	Rectangle  m1;
 	Rectangle  m2;
+	Rectangle  p1;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -34,14 +35,18 @@ public class Main extends Application {
 			m2 = new Controlleur(2).getR0();
 			m2.setLayoutX(350);
 			
-			root.getChildren().addAll( m1, r0, m2);
+			p1 = new Controlleur(Color.WHITE).getR0();
+			p1.setLayoutX(200);
+			p1.setLayoutY(100);
+			
+			root.getChildren().addAll( m1, r0, m2, p1);
 
 			Scene scene = new Scene(root,1000,600);
 			
 			root.setOnMouseClicked(e -> gerer_clicks(r0, e));
 			scene.setOnKeyPressed(e1 -> gerer_keys(r0, e1));
 			
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
