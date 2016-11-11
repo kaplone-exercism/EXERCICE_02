@@ -1,23 +1,20 @@
 package application;
 
 import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
 
 public class Contact {
 	
-	public static boolean estEnContact(Rectangle r){
+	public static boolean estEnContact(Rectangle r, Rectangle mur){
 		
-		//commentaire simple
+		System.out.println(r.getX());
+		System.out.println(mur.getLayoutX());
 		
+		if (r.getX() + r.getWidth() >= mur.getLayoutX()){
+			r.setX(0);
+			r.setFill(Color.RED);
+		}
 		
-		/*
-		 *  il faudrait ecrireplus de code
-		 *  qui fasse vraiment quelque chose
-		 *  
-		 *  essaye avec ...
-		 */
-		
-		// décommente la ligne suivante
-		System.out.println("blablabal");
 
 		return false; // ça sert pas a grand chose
 	}
