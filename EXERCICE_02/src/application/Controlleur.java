@@ -36,7 +36,4 @@ public class Controlleur{
 	public void setR0(Rectangle r0) {
 		this.mur_1 = r0;
 	}
-	
-	
-
 }

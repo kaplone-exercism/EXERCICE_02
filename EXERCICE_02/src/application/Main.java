@@ -1,5 +1,9 @@
 package application;
 	
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -10,8 +14,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import javafx.scene.control.Button;
+import javafx.scene.shape.Circle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 
-public class Main extends Application {
+public class Main extends Application implements Initializable{
 		
 	int bonus = 0;
 	Rectangle  r0;
@@ -19,9 +28,14 @@ public class Main extends Application {
 	Rectangle  m2;
 	Rectangle  p1;
 	
+	@FXML
+	Circle cercle;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			
+			Scene scene = new Scene((Parent) JfxUtils.loadFxml("menu1.fxml"), 600, 400);
 			
 			Pane root = new Pane();
 			
@@ -41,10 +55,10 @@ public class Main extends Application {
 			
 			root.getChildren().addAll( m1, r0, m2, p1);
 
-			Scene scene = new Scene(root,1000,600);
-			
-			root.setOnMouseClicked(e -> gerer_clicks(r0, e));
-			scene.setOnKeyPressed(e1 -> gerer_keys(r0, e1));
+//			Scene scene = new Scene(root,1000,600);
+//			
+//			root.setOnMouseClicked(e -> gerer_clicks(r0, e));
+//			scene.setOnKeyPressed(e1 -> gerer_keys(r0, e1));
 			
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
@@ -149,5 +163,36 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+		cercle.setOnMouseEntered(a -> cercle.setFill(Color.GREEN));
+		cercle.setOnMouseExited(a -> cercle.setFill(Color.YELLOW));
+		
+		String [] command = new String [] {
+				"firefox",
+				"ina.fr"
+				
+		};
+		
+		cercle.setOnMouseClicked(a -> new Thread(new Runnable() {
+		
+			@Override
+			public void run() {
+				
+				System.out.println("run");
+				Process p;
+				try {
+					p = new ProcessBuilder(command).start();
+				}
+                catch (IOException e){
+                	e.printStackTrace();
+				
+				}
+				
+			}
+		}).start());
 	}
 }
